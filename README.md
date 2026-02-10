@@ -1,2 +1,18 @@
-# Simran-Physics-Project
-This project is designed as an introductory yet practical exploration of Python programming for physics applications. The main objective of the project is to build a small, reusable set of computational tools that demonstrate how core Python concepts can be applied to real problems encountered in physics research and laboratory work
+# Scientific Python Physics Toolbox
+
+## About
+This repository contains a beginner-level physics toolbox developed using Python.  
+The project demonstrates how core programming concepts can be applied to physics problems.
+
+## Topics Covered
+- Plasma temperature classification
+- Material properties lookup
+- Particle energy calculations
+
+## Tools Used
+- Python (Anaconda)
+- Spyder / Jupyter Notebook
+- Git & GitHub
+
+## How to Run
+Open the notebook using Anaconda (Spyder or Jupyter) and run the cells sequentially.
