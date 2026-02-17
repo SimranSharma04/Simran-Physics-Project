@@ -1,0 +1,46 @@
+# Task 1: Plasma Temperature Classifier
+# ------------------------------------
+
+# Function to classify plasma temperature
+def classify_plasma_temp(temp):
+    #Classifies plasma based on temperature in Kelvin
+    if temperature < 10^4:
+        return "Cold plasma"
+    elif 10^4 <= temp <= 10^6:
+        return "Warm plasma"
+    else:
+        return "Hot plasma"
+
+
+# List to store (temperature, category)
+results = []
+
+print("Enter 5 plasma temperatures in Kelvin:\n")
+
+count = 0
+while count < 5:
+    try:
+        temp = float(input(f"Temperature {count + 1}: "))
+        category = classify_plasma_temp(temp)
+        results.append((temp, category))
+        count += 1
+    except ValueError:
+        print("Invalid input! Please enter a numeric value.\n")
+
+
+# Print formatted table
+print("\nPlasma Temperature Classification Table")
+print("-" * 45)
+print(f"{'Temperature (K)':<20}{'Category':<25}")
+print("-" * 45)
+
+for temp, category in results:
+    print(f"{temp:<20.2f}{category:<25}")
+
+print("-" * 45)
+
+
+# Explanation (1–2 sentences)
+print("\nWhy temperature classification matters:")
+print("Plasma temperature determines the degree of ionization and energy of particles,")
+print("which directly affects plasma behavior, diagnostics, and experimental applications.")
