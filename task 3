@@ -1,0 +1,75 @@
+import matplotlib.pyplot as plt
+
+# Constant for conversion
+EV_CONVERSION = 1.6e-19  # 1 eV ≈ 1.6 × 10^-19 Joules
+
+# Define Particle class
+class Particle:
+    def __init__(self, name, mass_kg, velocity_m_s, charge_C=0):
+        self.name = name
+        self.mass_kg = float(mass_kg)
+        self.velocity_m_s = float(velocity_m_s)
+        self.charge_C = float(charge_C)  # Bonus attribute
+
+    # Method to calculate kinetic energy
+    def kinetic_energy(self):
+        return 0.5 * self.mass_kg * (self.velocity_m_s ** 2)
+
+    # Bonus method: potential energy
+    def potential_energy(self, voltage_V):
+        return self.charge_C * voltage_V
+
+
+# Create particle objects with realistic values
+electron = Particle(
+    name="Electron",
+    mass_kg=9.11e-31,
+    velocity_m_s=2.2e6,
+    charge_C=-1.6e-19
+)
+
+proton = Particle(
+    name="Proton",
+    mass_kg=1.67e-27,
+    velocity_m_s=1.5e5,
+    charge_C=1.6e-19
+)
+
+alpha_particle = Particle(
+    name="Alpha Particle",
+    mass_kg=6.64e-27,
+    velocity_m_s=1.0e5,
+    charge_C=3.2e-19
+)
+
+particles = [electron, proton, alpha_particle]
+
+print("Particle Energy Calculator")
+print("-" * 40)
+name = []
+energy = []
+for p in particles:
+    ke_joules = p.kinetic_energy()
+    ke_ev = ke_joules / EV_CONVERSION
+
+    print(f"{p.name}:")
+    name.append(f"{p.name}:")
+    print(f"  Kinetic Energy = {ke_ev:.2e} eV")
+
+    # Bonus demonstration at 100 V potential
+    pe_joules = p.potential_energy(100)
+    pe_ev = pe_joules / EV_CONVERSION
+    print(f"  Potential Energy at 100V = {pe_ev:.2e} eV\n")
+    energy.append(ke_ev)
+
+print("-" * 40)
+
+plt.figure()
+plt.bar(name, energy)
+plt.xlabel("Particle Type")
+plt.ylabel("Energy (eV)")
+plt.title("Comparison of Particle Energies")
+plt.grid(True)
+plt.show()
+
+
