@@ -1,0 +1,66 @@
+# Dictionary of materials and their properties
+materials = {
+    "Aluminum": {"density_g_cm3": "2.7", "conductivity": 3.5e7, "youngs_modulus_GPa": 70},
+    "Copper": {"density_g_cm3": "8.96", "conductivity": 5.96e7, "youngs_modulus_GPa": 110},
+    "Silicon": {"density_g_cm3": "2.33", "conductivity": 1.56e-3, "youngs_modulus_GPa": 130},
+    "Graphene": {"density_g_cm3": "2.26", "conductivity": 1e8, "youngs_modulus_GPa": 1000}
+}
+
+# Function to add a new material
+def add_material(name, density, conductivity, youngs_modulus):
+    materials[name] = {
+        "density_g_cm3": str(density),  # stored as string intentionally
+        "conductivity": conductivity,
+        "youngs_modulus_GPa": youngs_modulus
+    }
+    print(f"{name} added successfully!\n")
+
+
+# Function to find material with highest conductivity
+def highest_conductivity():
+    material = max(materials, key=lambda m: materials[m]["conductivity"])
+    return material, materials[material]["conductivity"]
+
+
+# Function to return list of densities as floats
+def get_densities():
+    densities = [
+        float(materials[m]["density_g_cm3"].replace(",", "").strip())
+        for m in materials
+    ]
+    return densities
+
+
+# -------- Example Usage --------
+
+# Add a new material
+add_material("Titanium", "4.51", 2.38e6, 116)
+
+# Find highest conductivity
+mat, cond = highest_conductivity()
+print(f"Material with highest conductivity: {mat} ({cond} S/m)\n")
+
+# Get densities
+densities = get_densities()
+print("List of densities (g/cm^3):", densities, "\n")
+
+
+# Print all materials nicely
+print("Material Properties:")
+print("-" * 55)
+print(f"{'Material':<12}{'Density':<12}{'Conductivity':<18}{'Youngs Modulus':<10}")
+print("-" * 55)
+
+for m, props in materials.items():
+    print(f"{m:<12}{props['density_g_cm3']:<12}{props['conductivity']:<18}{props['youngs_modulus_GPa']:<10}")
+
+print("-" * 55)
+
+
+# Short comment
+print("\nComment:")
+print("Dictionaries help organize experimental data efficiently by storing multiple")
+print("properties under one material, making lookup, updates, and comparisons very easy.")
+
+
+
